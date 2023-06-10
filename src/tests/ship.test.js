@@ -24,5 +24,34 @@ describe('Ships', () => {
     
     });
 
-    
+    describe('Function Hit', () => {
+        const ship = Ship('submarine');
+
+        test('No hits', () => {
+            expect(ship.getHits()).toEqual([null, null, null]);
+        });
+
+        test('one hit', () => {
+            ship.hit(2);
+            expect(ship.getHits()).toEqual([null, null, 'hit']);
+        });
+    });
+
+    describe('Function isSunk', () => {
+        const ship = Ship('destroyer');
+
+        test('not punk', () => {
+            expect(ship.isSunk()).toBe(false);
+        });
+        
+        test('hit but not sunk', () => {
+            ship.hit(0);
+            expect(ship.isSunk()).toBe(false);
+        });
+
+        test('sunk', () => {
+            ship.hit(1);
+            expect(ship.isSunk()).toBe(true);
+        });
+    });
 });
