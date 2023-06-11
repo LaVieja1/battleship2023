@@ -66,12 +66,36 @@ const Gameboard = () => {
         }
     };
 
+    const receiveAttack = (y, x) => {
+        //Determina si el ataque golpea un barco o no
+        if (board[y][x] === null) {
+            //Graba el disparo fallado
+            board[y][x] = 'miss';
+        } else if (board[y][x].ship) {
+            //Llama a la funcion hit en el barco correcto
+            board[y][x].ship.hit(board[y][x].index);
+            //Graba el disparo acertado con 'hit'
+            board[y][x] = 'hit';
+        }
+        return board[y][x];
+    };
+
+    const areAllShipsSunk = () => placedShips.every((ship) => ship.isSunk());
+
+    const reset = () => {
+        board = Array(10).fill(null).map(() => Array(10).fill(null));
+        placedShips = [];
+    };
+
     return {
         getBoard,
         placeShip,
         areAllShipsPlaces,
         autoPlaceFleet,
+        receiveAttack,
+        areAllShipsSunk,
+        reset,
     };
-}
+};
 
 export default Gameboard;

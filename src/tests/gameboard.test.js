@@ -155,5 +155,42 @@ describe('Gameboard', () => {
         });
     });
 
+    describe('receive attack', () => {
+        const gameboard = Gameboard();
+        const carrier = Ship('carrier');
+        const battleship = Ship('battleship');
+        gameboard.placeShip(carrier, 2, 0); // [2,0],[2,1],[2,2],[2,3],[2,4]
+        battleship.changeDirection();
+        gameboard.placeShip(battleship, 3, 2); // [3,2],[4,2],[5,2],[6,2]
+
+        test('Attack a carrier at index 0', () => {
+            gameboard.receiveAttack(2, 0);
+            const actual = carrier.getHits();
+            expect(actual).toEqual(['hit', null, null, null, null]);
+        });
+
+        test('Attack a carrier at index 3', () => {
+            gameboard.receiveAttack(2, 3);
+            const actual = carrier.getHits();
+            expect(actual).toEqual(['hit', null, null, 'hit', null]);
+        });
+
+        test('Miss', () => {
+            gameboard.receiveAttack(0, 0);
+            const actual = gameboard.getBoard()[0][0];
+            expect(actual).toEqual('miss');
+        });
+
+        test('Hit a cell (2,0)', () => {
+            const actual = gameboard.getBoard()[2][0];
+            expect(actual).toEqual('hit');
+        });
+
+        test('Hit a cell (2,3)', () => {
+            const actual = gameboard.getBoard()[2][3];
+            expect(actual).toEqual('hit');
+        });
+    });
+
     
 })
