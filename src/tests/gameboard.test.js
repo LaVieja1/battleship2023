@@ -106,4 +106,34 @@ describe('Gameboard', () => {
             expect(actual).toEqual(null); //No coloca el battleship porque carrier ocupa [2,2]
           });
     });
+
+    describe('All ships placed', () => {
+        const gameboard = Gameboard();
+        const carrier = Ship('carrier');
+        const battleship = Ship('battleship');
+        const cruiser = Ship('cruiser');
+        const submarine = Ship('submarine');
+        const destroyer = Ship('destroyer');
+
+        test('No ships placed', () => {
+            const actual = gameboard.areAllShipsPlaces();
+            expect(actual).toBe(false);
+        });
+
+        test('Some ships placed', () => {
+            gameboard.placeShip(carrier, 0 , 0);
+            gameboard.placeShip(battleship, 1, 0);
+            const actual = gameboard.areAllShipsPlaces();
+            expect(actual).toBe(false);
+        });
+
+        test('Placed all ships', () => {
+            gameboard.placeShip(cruiser, 2, 0);
+            gameboard.placeShip(submarine, 3, 0);
+            gameboard.placeShip(destroyer, 4, 0);
+            const actual = gameboard.areAllShipsPlaces();
+            expect(actual).toBe(true);
+        });
+    });
+    
 })

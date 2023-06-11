@@ -55,6 +55,7 @@ const Gameboard = () => {
     return {
         getBoard,
         placeShip,
+        areAllShipsPlaces,
     };
 }
 
