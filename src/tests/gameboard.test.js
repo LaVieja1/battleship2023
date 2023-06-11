@@ -192,5 +192,34 @@ describe('Gameboard', () => {
         });
     });
 
+    describe('Are all ships sunk', () => {
+        const gameboard = Gameboard();
+        const submarine = Ship('submarine');
+        const destroyer = Ship('destroyer');
+        gameboard.placeShip(submarine, 2, 0); // [2,0],[2,1],[2,2]
+        destroyer.changeDirection();
+        gameboard.placeShip(destroyer, 3, 2); // [3,2],[4,2]
+
+        test('NO Ship is sunk', () => {
+            const actual = gameboard.areAllShipsSunk();
+            expect(actual).toEqual(false);
+        });
+
+        test('1 Ship has sunk', () => {
+            gameboard.receiveAttack(2, 0);
+            gameboard.receiveAttack(2, 1);
+            gameboard.receiveAttack(2, 2);
+            const actual = gameboard.areAllShipsSunk();
+            expect(actual).toEqual(false);
+        });
+
+        test('All ships have sunk', () => {
+            gameboard.receiveAttack(3, 2);
+            gameboard.receiveAttack(4, 2);
+            const actual = gameboard.areAllShipsSunk();
+            expect(actual).toEqual(true);
+        });
+    });
+
     
 })
