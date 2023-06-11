@@ -68,5 +68,42 @@ describe('Gameboard', () => {
         }); 
     });
 
-    
+    describe('NOT Place out-of-bounds ship', () => {
+        const gameboard = Gameboard();
+        const carrier = Ship('carrier'); // 5 length
+
+        test('out-of-bounds ship horizontal', () => {
+            gameboard.placeShip(carrier, 7, 7); //[7,7],[7,8],[7,9],[7,10],[7,11] X
+            const actual = gameboard.getBoard()[7][7];
+            expect(actual).toEqual(null);
+        });
+
+        test('out-of-bounds ship vertical', () => {
+            carrier.changeDirection();
+            gameboard.placeShip(carrier, 7, 7); // [7,7],[8,7],[9,7],[10,7],[11,7] X
+            const actual = gameboard.getBoard()[7][7];
+            expect(actual).toEqual(null);
+        });
+    });
+
+    describe('NOT Place if collision with another ship', () => {
+        const gameboard = Gameboard();
+        const carrier = Ship('carrier');
+        const battleship = Ship('battleship');
+
+        test('Collision with ship', () => {
+            gameboard.placeShip(carrier, 2, 0); //[2,0],[2,1],[2,2],[2,3],[2,4]
+            gameboard.placeShip(battleship, 2, 0); //[2,0],[2,1],[2,2],[2,3] X
+            const actual = gameboard.getBoard()[2][0];
+            expect(actual).toEqual({ ship: carrier, index: 0 }); //No coloca el battleship
+        });
+
+        test('Collision with ship 1 place', () => {
+            gameboard.placeShip(carrier, 2, 0); //[2,0],[2,1],[2,2],[2,3],[2,4]
+            battleship.changeDirection();
+            gameboard.placeShip(battleship, 0, 2); // [0,2],[1,2],[2,2],[3,2] X
+            const actual = gameboard.getBoard()[0][2];
+            expect(actual).toEqual(null); //No coloca el battleship porque carrier ocupa [2,2]
+          });
+    });
 })
