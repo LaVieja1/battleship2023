@@ -10,6 +10,18 @@ describe('Gameboard', () => {
             expect(actual).toBe(expected);
         });
 
+        test('Board row', () => {
+            const actual = gameboard.getBoard().length;
+            const expected = 10;
+            expect(actual).toBe(expected);
+        });
 
-    })
+        test('Board column', () => {
+            const actual = gameboard.getBoard()[0].length;
+            const expected = 10;
+            expect(actual).toBe(expected);
+        });
+    });
+
+
 })
