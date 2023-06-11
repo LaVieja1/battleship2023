@@ -221,5 +221,16 @@ describe('Gameboard', () => {
         });
     });
 
-    
-})
+    describe('Reset board', () => {
+        const gameboard = Gameboard();
+        const player = Player();
+        const fleet = player.getFleet();
+        gameboard.autoPlaceFleet(fleet);
+        gameboard.reset();
+        
+        test('Empties board', () => {
+            const actual = gameboard.getBoard().flat().every((cell) => cell === null);
+            expect(actual).toEqual(true);
+        });
+    });
+});
