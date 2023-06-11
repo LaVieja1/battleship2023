@@ -52,10 +52,25 @@ const Gameboard = () => {
         return cells.every((cell) => cell === null);
     };
 
+    const autoPlace = (ship) => {
+        const [y, x] = randCoords();
+        const changeOrient = Math.random() > 0.5;
+        if (changeOrient) ship.changeDirection();
+        const placed = placeShip(ship, y, x);
+        if (!placed) autoPlace(ship); //Si no se puede colocar, se usa la recursion buscar otro lugar en el tablero
+    };
+
+    const autoPlaceFleet = (fleet) => {
+        for (const ship in fleet) {
+            autoPlace(fleet[ship]);
+        }
+    };
+
     return {
         getBoard,
         placeShip,
         areAllShipsPlaces,
+        autoPlaceFleet,
     };
 }
 

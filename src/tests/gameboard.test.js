@@ -1,4 +1,5 @@
 import Gameboard from "../modules/gameboard.js";
+import Player from "../modules/player.js";
 import Ship from "../modules/ship.js";
 
 describe('Gameboard', () => {
@@ -135,5 +136,24 @@ describe('Gameboard', () => {
             expect(actual).toBe(true);
         });
     });
+
+    describe('Auto place fleet', () => {
+        const gameboard = Gameboard();
+        const player = Player();
+        const fleet = player.getFleet();
+        gameboard.autoPlaceFleet(fleet);
+
+        test('All ships placed', () => {
+            const actual = gameboard.areAllShipsPlaces();
+            expect(actual).toBe(true);
+        });
+
+        test('Number of cells matches all ships placed', () => {
+            const actual = gameboard.getBoard().flat().filter((cell) => cell !== null)
+                .length;
+            expect(actual).toBe(17);
+        });
+    });
+
     
 })
