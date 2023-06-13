@@ -1,0 +1,65 @@
+/* BASE */
+
+:root {
+    /* BACKGROUND */
+    --bg-color: #0b043c;
+    --shadow-size: 0px 0px 5px 0px;
+    /* TEXT */
+    --text-color1: #ff0000;
+    --text-color2: #ffffff;
+    /* GRID */
+    --grid-color: #0b043c;
+    --grid-border1: linear-gradient(-45deg, #00d9ff, #ffffff);
+    --grid-border2: linear-gradient(-45deg, #ff0000, #fae900);
+    /* CELLS */
+    --cell-color-bg: #00c1fc;
+    --cell-color-hover: #ff0000;
+    --cell-color-border: #ffffff36;
+    --cell-size-default: 2rem;
+    --cell-size-small: 1rem;
+    --cell-size-medium: 2rem;
+    --cell-size-large: 2.5rem;
+    --cell-size-huge: 3rem;
+    /* CELL EVENTS */
+    --hit: radial-gradient(circle, #fff400 8%, #ba0505 55%);
+    --miss: #0f3366;
+    /* SHIPS */
+    --destroyer-color: rgb(173, 20, 0);
+    --destroyer-border: rgb(255, 8, 0);
+    --submarine-color: rgb(196, 152, 11);
+    --submarine-border: rgb(240, 209, 106);
+    --cruiser-color: rgb(55, 158, 7);
+    --cruiser-border: rgb(122, 240, 106);
+    --battleship-color: rgb(51, 63, 236);
+    --battleship-border: rgb(106, 137, 240);
+    --carrier-color: rgb(70, 6, 153);
+    --carrier-border: rgb(157, 106, 240);
+    /* BREAKPOINTS FOR MEDIA QUERIES */
+    --breakpoint-small: 576px;
+    --breakpoint-medium: 768px;
+    --breakpoint-large: 992px;
+    --breakpoint-huge: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Kanit', sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    background: var(--bg-color);
+    background-size: cover;
+}
+
+html,
+body {
+    font-size: 100%;
+    color: white;
+}
+
