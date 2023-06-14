@@ -5,7 +5,7 @@
     --bg-color: #0b043c;
     --shadow-size: 0px 0px 5px 0px;
     /* TEXT */
-    --text-color1: #ff0000;
+    --text-color1: #65b83f;
     --text-color2: #ffffff;
     /* GRID */
     --grid-color: #0b043c;
@@ -63,3 +63,53 @@ body {
     color: white;
 }
 
+/* HEADER */
+
+.title {
+    font-size: 2.2rem;
+    margin: 1.5rem 0 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--text-color1);
+}
+
+a,
+a:visited {
+    display: inline-block;
+    color: var(--text-color2);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-color1);
+    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 576px) {
+    .title {
+        font-size: 3rem;
+        margin: 2rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 5rem;
+        margin: 2rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .title {
+        font-size: 5rem;
+        margin: 3rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .title {
+        font-size: 5rem;
+        margin: 3.5rem;
+    }
+}
