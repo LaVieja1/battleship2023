@@ -347,6 +347,64 @@ a:hover {
     border: 1px solid var(--carrier-border);
 }
 
+/* BUTTONS */
+
+.fleet-autoplace,
+.play-again,
+.start {
+    font-size: 1rem;
+    color: inherit;
+    text-transform: uppercase;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: var(--grid-border2);
+    background-color: var(--bg-color);
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.fleet-autoplace:hover,
+.play-again:hover,
+.start:hover {
+    cursor: pointer;
+    background-color: #030027;
+    transform: scaleX(1.01);
+}
+
+.fleet-autoplace {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+    width: 10em;
+    height: 2em;
+    font-size: 1.5rem;
+}
+
+.fleet-autoplace.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.play-again {
+    font-size: inherit;
+    width: 10em;
+    height: 2em;
+}
+
+.start {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+    width: 5em;
+    height: 2em;
+    font-size: 3.5rem;
+}
+
+.start.show {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* MEDIA QUERIES */
 
 /* SMALL */
@@ -420,6 +478,15 @@ a:hover {
         height: 1rem;
     }
 
+    /* BUTTONS */
+
+    .fleet-autoplace {
+        font-size: 0.7rem;
+    }
+
+    .start {
+        font-size: 1.4rem;
+    }
 }
 
 /* MEDIUM */
@@ -491,6 +558,16 @@ a:hover {
     .ship div {
         width: 2rem;
         height: 2rem;
+    }
+
+    /* BUTTONS */
+
+    .fleet-autoplace {
+        font-size: 1rem;
+    }
+
+    .start {
+        font-size: 2.1rem;
     }
 }
 
@@ -566,6 +643,17 @@ a:hover {
         width: 2.5rem;
         height: 2.5rem;
     }
+
+    /* BUTTONS */
+
+    .fleet-autoplace {
+        font-size: 1.2rem;
+    }
+
+    .start {
+        position: absolute;
+        font-size: 2.7rem;
+    }
 }
 
 /* HUGE */
@@ -639,5 +727,16 @@ a:hover {
     .ship div {
         width: 3rem;
         height: 3rem;
+    }
+
+    /* BUTTONS */
+
+    .fleet-autoplace {
+        font-size: 1.3rem;
+    }
+
+    .start {
+        position: absolute;
+        font-size: 3.2rem;
     }
 }
