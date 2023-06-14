@@ -2,15 +2,15 @@
 
 :root {
     /* BACKGROUND */
-    --bg-color: #0b043c;
+    --bg-color: #100f18;
     --shadow-size: 0px 0px 5px 0px;
     /* TEXT */
-    --text-color1: #65b83f;
+    --text-color1: #287e00;
     --text-color2: #ffffff;
     /* GRID */
     --grid-color: #0b043c;
     --grid-border1: linear-gradient(-45deg, #00d9ff, #ffffff);
-    --grid-border2: linear-gradient(-45deg, #ff0000, #fae900);
+    --grid-border2: linear-gradient(-45deg, #344ddd, #47b625);
     /* CELLS */
     --cell-color-bg: #00c1fc;
     --cell-color-hover: #ff0000;
@@ -230,6 +230,7 @@ a:hover {
     font-size: 1rem;
     margin: 0 0 0.5rem 0;
     color: var(--text-color2);
+    text-align: center;
 }
 
 .grid-cell {
@@ -395,7 +396,7 @@ a:hover {
     visibility: hidden;
     opacity: 0;
     transition: opacity 2s ease;
-    width: 5em;
+    width: 6em;
     height: 2em;
     font-size: 3.5rem;
 }
