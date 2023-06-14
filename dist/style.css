@@ -73,7 +73,7 @@ body {
     color: var(--text-color1);
 }
 
-a,
+.title a,
 a:visited {
     display: inline-block;
     color: var(--text-color2);
@@ -86,30 +86,195 @@ a:hover {
     transform: rotate(360deg);
 }
 
+/* GRIDS */
+
+.grid-disabled {
+    transform: scale(0.8);
+    transition: all 1s ease;
+    opacity: 0.7;
+}
+
+.grid {
+    box-sizing: content-box;
+    background-color: var(--grid-color);
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    width: 20rem;
+    height: 20rem;
+}
+
+.grid-title {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color2);
+}
+
+.grid-cell {
+    border: 1px solid var(--cell-color-border);
+}
+
+.grid-cell:hover {
+    border-radius: 5px;
+}
+
+.p1-grid {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: var(--grid-border1);
+    cursor: none;
+}
+
+.p1-grid .grid-cell:hover {
+    cursor: crosshair;
+    background-color: var(--cell-color-bg);
+    -webkit-box-shadow: 0px 0px 5px 0px var(--cell-color-bg);
+    -moz-box-shadow: 0px 0px 5px 0px var(--cell-color-bg);
+    box-shadow: 0px 0px 5px 0px var(--cell-color-bg);
+}
+
+.p2-grid {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: var(--grid-border2);
+}
+
+.p2-grid .grid-cell:hover {
+    cursor: crosshair;
+    background-color: var(--cell-color-hover);
+    -webkit-box-shadow: 0px 0px 5px 0px var(--cell-color-hover);
+    -moz-box-shadow: 0px 0px 5px 0px var(--cell-color-hover);
+    box-shadow: 0px 0px 5px 0px var(--cell-color-hover);
+}
+
+.hit {
+    background: var(--hit);
+    clip-path: polygon(
+        49% 0,
+        61% 19%,
+        100% 1%,
+        79% 36%,
+        97% 40%,
+        83% 53%,
+        96% 73%,
+        76% 74%,
+        80% 100%,
+        59% 79%,
+        46% 100%,
+        38% 81%,
+        0 100%,
+        19% 67%,
+        4% 62%,
+        19% 47%,
+        0 31%,
+        26% 30%,
+        13% 1%,
+        41% 21%
+    );
+}
+
+.miss {
+    background-color: var(--miss);
+}
+
+/* MEDIA QUERIES */
+
+/* SMALL */
 @media screen and (min-width: 576px) {
+    
     .title {
         font-size: 3rem;
         margin: 2rem;
     }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+        width: 10rem;
+        height: 10rem;
+    }
+    
+    .grid-title {
+        margin: 1rem 0;
+        font-size: 1rem;
+    }
+    
+    .grid-cell {
+        width: 1rem;
+        height: 1rem;
+    }
 }
 
+/* MEDIUM */
 @media screen and (min-width: 768px) {
+    
     .title {
         font-size: 5rem;
         margin: 2rem;
     }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+        width: 20rem;
+        height: 20rem;
+    }
+    
+    .grid-title {
+        margin: 1rem 0;
+        font-size: 1.3rem;
+    }
+    
+    .grid-cell {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
+/* LARGE */
 @media screen and (min-width: 992px) {
+
     .title {
         font-size: 5rem;
         margin: 3rem;
     }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+        width: 25rem;
+        height: 25rem;
+    }
+    
+    .grid-title {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+    }
+    
+    .grid-cell {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
+/* HUGE */
 @media screen and (min-width: 1200px) {
+    
     .title {
         font-size: 5rem;
         margin: 3.5rem;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+        width: 30rem;
+        height: 30rem;
+    }
+    
+    .grid-title {
+        margin: 1rem 0;
+        font-size: 1.8rem;
+    }
+    
+    .grid-cell {
+        width: 3rem;
+        height: 3rem;
     }
 }
